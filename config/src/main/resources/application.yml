@@ -6,5 +6,7 @@ spring:
       server:
         git:
           uri: http://git.oschina.net/didispace/config-repo-demo/
+          username: 31601124Ljc
+          password: 63591458abc
 server:
   port: 1201
