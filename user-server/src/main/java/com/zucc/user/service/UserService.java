@@ -3,25 +3,26 @@ package com.zucc.user.service;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 
 import com.zucc.user.entity.User;
 import com.zucc.user.mapper.UserMapper;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class UserService extends BaseBiz<UserMapper, User> {
   
-  // 校验用户名密码
-  public String checkPassword(String username, String password) {
+  // 用于校验用户名密码：根据用户名返回该用户信息
+  public User checkPassword(String username) {
+    log.info("进行密码校验");
     List<User> users = mapper.findUserByUserName(username, 0);
     if(users.size() == 0) {
-      return "该用户不存在";
+      return null;
+    }else {
+      return users.get(0);
     }
-    else if(StringUtils.equals(password, users.get(0).getPassword())) {
-      return "密码校验通过";
-    }
-    return "用户名或密码错误";
   }
   
   // 更改密码(自己)

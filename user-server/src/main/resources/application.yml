@@ -1,7 +1,7 @@
 server:
   port: 2002
   servlet:
-     context-path: /userServer
+     context-path: /user-server
      session:
        timeout: 6000 # Session timeout. If a duration suffix is not specified, seconds is used.
 spring:
@@ -20,6 +20,7 @@ spring:
     username: root
     password: oracle
     driver-class-name: com.mysql.jdbc.Driver
+    hikari:      max-lifetime: 12000000
 eureka:
   client:
     service-url:

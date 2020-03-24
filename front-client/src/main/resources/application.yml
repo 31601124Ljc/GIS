@@ -1,0 +1,45 @@
+server:
+  port: 2003
+  servlet:
+     context-path: /main
+     session:
+       timeout: 6000 # Session timeout. If a duration suffix is not specified, seconds is used.
+spring:
+  application:
+    name: front
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+    serialization:
+      fail-on-empty-beans: false
+  cloud:
+    config:
+      server:
+        git:
+          uri: http://git.oschina.net/didispace/config-repo-demo/
+  datasource:
+    name: gis
+    url: jdbc:mysql://114.55.25.231:3306/municipal_facility_management?useUnicode=true&characterEncoding=UTF8&useSSL=false
+    username: root
+    password: oracle
+    driver-class-name: com.mysql.jdbc.Driver
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1001/eureka/
+mybatis:
+  basepackage: com.zucc.user.mapper
+  xmlLocation: classpath:mapper/**/*.xml
+  mapper-locations: "classpath*:mapper/*.xml"
+  type-handlers-package: com.zucc.user.utils.typeHandler ##指定typeHandler目录后，除特殊需求外可以不需要在程序中额外指定
+  typeAliasesPackage: org.cloud.demo.service.model
+feign:
+  httpclient:
+    enabled: false
+  okhttp:
+    enabled: true
+shiro:
+  web:
+    enabled: true
+  loginUrl: /login
+  successUrl: /index
