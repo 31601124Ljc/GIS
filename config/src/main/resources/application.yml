@@ -15,5 +15,7 @@ management:
     web:
       exposure:
         include: "*"
+        username: 31601124Ljc
+        password: 63591458abc
 server:
   port: 1201
